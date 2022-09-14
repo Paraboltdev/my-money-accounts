@@ -1,0 +1,22 @@
+.header_main_div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.select_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+}
+
+.select_div div{
+    width: 40%;
+    height: 25px;
+   
+    margin-bottom: 10px;
+    border: solid 1px cyan;
+}
