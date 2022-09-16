@@ -17,31 +17,32 @@ const ExpensesProvider = ({ children }) => {
     const [options, setOptions] = useState(Theoptions);
     const [concept, setConcept] = useState("");
     const [money, setMoney] = useState();
-    const [movements, setMovements] = useState([]);
+    const [expMovements, setExpMovements] = useState([]);
     
     const [selected, setSelected]= useState()
   
-  const [totalAmount, setTotalAmount] = useState([]);
+  const [totalExpAmount, setTotalExpAmount] = useState([]);
 
   
   useEffect(()=>{
     const myBillsAccounts = JSON.parse(localStorage.getItem('monthBills'))
     
     if(myBillsAccounts){
-      setMovements(myBillsAccounts)
+      setExpMovements(myBillsAccounts)
     }
     
   },[])
   
   useEffect(()=>{
-    localStorage.setItem('monthBills', JSON.stringify(movements))
-  },[movements])
+    localStorage.setItem('monthBills', JSON.stringify(expMovements))
+  },[expMovements])
 
   const newMove = {
     selected,
    
     concept,
     money,
+    totalExpAmount,
     id: uuid(),
   };
 console.log(newMove)
@@ -55,11 +56,11 @@ console.log(newMove)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMovements((prevSetMovements) => [...prevSetMovements, newMove]);
-    setTotalAmount((prevtotalAmount)=> [...prevtotalAmount, parseFloat(newMove.money)])
+    setExpMovements((prevSetMovements) => [...prevSetMovements, newMove]);
+    setTotalExpAmount((prevtotalAmount)=> [...prevtotalAmount, parseFloat(newMove.money)])
   };
 
-  const amount = totalAmount.reduce((acc, currVal)=> acc + currVal,0)
+  const amount = totalExpAmount.reduce((acc, currVal)=> acc + currVal,0)
 const handleSelected= (e) =>{
   setSelected(e.target.value)
 }
@@ -67,15 +68,15 @@ const handleSelected= (e) =>{
     handleConcept,
     handleSubmit,
     handleMoney,
-    totalAmount,
-    setTotalAmount,
+    totalExpAmount,
+    setTotalExpAmount,
     options,
     concept,
     setConcept,
     money,
     setMoney,
-    movements,
-    setMovements,
+    expMovements,
+     setExpMovements,
     handleSelected,
     amount
   };

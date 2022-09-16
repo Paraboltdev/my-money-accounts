@@ -7,3 +7,14 @@
   font-weight: bold;
   color: red;
 }
+.filter-div{
+  font-size: 1.2rem;
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: none;
+  width: 25vw;
+}
+.filter-div:nth-child(6){
+  border-bottom: 1px solid black;
+  
+}

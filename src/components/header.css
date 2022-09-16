@@ -6,6 +6,7 @@
 }
 
 .select_div{
+    gap: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,8 +14,8 @@
 
 }
 
-.select_div div{
-    width: 40%;
+.select_div button{
+    width: auto;
     height: 25px;
    
     margin-bottom: 10px;

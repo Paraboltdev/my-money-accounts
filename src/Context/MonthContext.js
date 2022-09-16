@@ -9,24 +9,28 @@ const MonthProvider = ({ children }) => {
   const [movements, setMovements] = useState([]);
   // const total = money.reduce((acc,el)=> acc+el)
   const [totalAmount, setTotalAmount] = useState([]);
+  const totalPlus = totalAmount.reduce((acc, currVal) => acc + currVal, 0);
+  const [plus, setPlus] = useState(totalPlus);
 
-  useEffect(()=>{
-    const myMoney = JSON.parse(localStorage.getItem('monthMoney'))
-    if(myMoney){
-      setMovements(myMoney)
+  useEffect(() => {
+    const myMoney = JSON.parse(localStorage.getItem("monthMoney"));
+
+    if (myMoney) {
+      setMovements(myMoney);
     }
-  },[])
+  }, []);
 
-  useEffect(()=>{
-    localStorage.setItem('monthMoney', JSON.stringify(movements))
-  },[movements])
+  useEffect(() => {
+    localStorage.setItem("monthMoney", JSON.stringify(movements));
+  }, [movements]);
 
-  const date = new Date()
-  console.log(date)
+  const date = new Date();
+  console.log(date);
 
   const newMove = {
     concept,
     money,
+
     id: uuid(),
   };
 
@@ -34,10 +38,8 @@ const MonthProvider = ({ children }) => {
     setConcept(e.target.value);
   };
   const handleMoney = (e) => {
-   
     setMoney(e.target.value);
   };
- 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,11 +48,15 @@ const MonthProvider = ({ children }) => {
       ...prevTotalAmount,
       parseFloat(newMove.money),
     ]);
-    setMoney("")
-    setConcept("")
+    setMoney("");
+    setConcept("");
   };
-  const totalPlus = totalAmount.reduce((acc, currVal) => acc + currVal, 0);
+  const handleReset = () => {
+    setMovements([]);
+  };
+
   const data = {
+    handleReset,
     handleConcept,
     handleSubmit,
     handleMoney,
@@ -62,7 +68,7 @@ const MonthProvider = ({ children }) => {
     setMoney,
     movements,
     setMovements,
-    totalPlus
+    totalPlus,
   };
   return <MonthContext.Provider value={data}>{children}</MonthContext.Provider>;
 };

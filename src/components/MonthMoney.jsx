@@ -23,8 +23,9 @@ const MonthMoney = () => {
   console.log(movements);
   return (
     <div className="main_div">
+      <h3>Ingresos</h3>
       <div className="input_div">
-        <input type="text" placeholder="concepto" onChange={handleConcept} />
+        <input type="text" placeholder="concepto"  onChange={handleConcept} />
 
         <input type="number"  onKeyDown={blockInvalidChar} placeholder="0.00" onChange={handleMoney} />
         <button onClick={handleSubmit}>+</button>

@@ -10,6 +10,7 @@ import CommonExpensives from './components/CommonExpensives';
 import MonthMoney from './components/MonthMoney';
 import Header from './components/Header';
 import TotalAmount from './components/TotalAmount';
+import FilterList from './components/FilterList';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     <Header />
     <Routes>
       <Route path="/" element={<Main />}/>
+      <Route path="/filter" element={<FilterList />}/>
       
       <Route path="/commonExpensives" element={<CommonExpensives />}/>
       <Route path="/monthMoney" element={<MonthMoney />}/>
@@ -24,6 +26,7 @@ function App() {
         
      
     </Routes>
+    <FilterList />
     <TotalAmount />
   </BrowserRouter>
   );

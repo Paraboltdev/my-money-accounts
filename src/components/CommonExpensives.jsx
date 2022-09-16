@@ -1,13 +1,15 @@
 import React, { useContext } from 'react'
 import ExpensesContext, { ExpensesProvider } from '../Context/ExpensesContext'
 import './commonExpensives.css'
+import MovementsDiv from './MovementsDiv'
 const CommonExpensives = () => {
-    const {amount,handleConcept,handleSubmit,handleSelected, handleMoney,options,setOptions,totalAmount, setTotalAmount ,movements, setMovements,concept, setConcept,money, setMoney} = useContext(ExpensesContext)
+    const {amount,handleConcept,handleSubmit,handleSelected, handleMoney,options,setOptions,totalExpAmount, setTotalExpAmount ,expMovements, setExpMovements,concept, setConcept,money, setMoney} = useContext(ExpensesContext)
 
     const blockInvalidChar = (e) => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
 
   return (
     <div className='main_div'>
+      <h3>Gastos</h3>
         <div className='form_div'>
             <select onChange={handleSelected}>
            {options.map((option, i)=>(
@@ -29,8 +31,8 @@ const CommonExpensives = () => {
      
              </div>
              <div >
-             {movements.map((move)=>(
-                 <div className='print_div' key={move.id}><p> {move.selected}</p><p> {move.concept}</p><p> {move.money}€</p> </div>
+             {expMovements.map((move)=>(
+                <MovementsDiv key={move.id} move={move} />
                  ))}
              </div>
              <p className='total'>{amount}€</p>
